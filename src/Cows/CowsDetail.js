@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getACow, getBreeds,updateCow } from '../utils/fetch-utils';
+import { getACow, getBreeds,updateCow,deleteCow } from '../utils/fetch-utils';
 import classNames from 'classnames';
 
 class CowsDetails extends Component {
@@ -31,13 +31,14 @@ class CowsDetails extends Component {
          return breedObject.id;
      };
 
+// UPDATE COWS INFORMATION
      handleClick = async (event) => {
         event.preventDefault();
         const updatedCowData = {
             id: this.state.id,
             sex: this.state.sex,
             number_horns: this.state.number_horns,
-            milk: this.state.milk,                                 //CHECK THIS MAY CAUSE SOME ISSUES!!!!!
+            milk: this.state.milk,                    //CHECK THIS MAY CAUSE SOME ISSUES!!!!!
             breed_id: this.getBreedId()
         };
         
@@ -50,8 +51,26 @@ class CowsDetails extends Component {
                 this.setState({message: ''});
             }, 3000)
         }
-
      };
+
+//DLETE COW
+     clickToDelete = async (event) => {
+         event.preventDefault();
+         const deleteCowData = {
+            id: this.state.id,
+            sex: this.state.sex,
+            number_horns: this.state.number_horns,
+            milk: this.state.milk,                    //CHECK THIS MAY CAUSE SOME ISSUES!!!!!
+            breed_id: this.getBreedId()
+        };
+        const data = await deleteCow(deleteCowData);
+        if (data.error){
+            this.setState({message: data.error, error: true});
+        } else {
+            this.props.history.push('/');
+        }
+     };
+     
 
     render() { 
         return ( 
@@ -116,6 +135,7 @@ class CowsDetails extends Component {
                         </select>
                     </div>
                             <button onClick={this.handleClick}>Update Cow's Info</button>
+                            <button onClick={this.clickToDelete}>Delete Cow</button>
                 </form>
 
             </>

@@ -4,10 +4,13 @@ import { Link} from 'react-router-dom';
 
 class CowsList extends Component {
     state = {cowss:[] }
+
 componentDidMount = async () => {
     const data = await getCows();
     this.setState({cowss: data})
-}
+};
+
+
     render() { 
         return (
            <div className='cows-list'>

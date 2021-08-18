@@ -23,6 +23,7 @@ export const getBreeds = async ()=>{
     return data;
 }
 
+// FUNCTION TO UPDATE EXISTING COW
 export const updateCow = async (cowObject) => {
     
     const resp = await fetch(`${URL}/cows/${cowObject.id}`, {
@@ -37,48 +38,37 @@ export const updateCow = async (cowObject) => {
     return data;
 };
 
+// FUNCTION TO CREATE A NEW COW
+export const createNewCow = async (cowObject) =>{
+
+    const resp = await fetch(`${URL}/cows/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cowObject),
+    });
+    const data = await resp.json();
+    return data;
+}
 
 
 
 
 
-
-// export const createNewCow = async () => {
-//     const resp = await fetch(`${URL}/cows`, {
-//         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-//         mode: 'cors', // no-cors, *cors, same-origin
-//         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-//         credentials: 'same-origin', // include, *same-origin, omit
-//         headers: {
-//           'Content-Type': 'application/json'
-//           // 'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//         redirect: 'follow', // manual, *follow, error
-//         referrerPolicy: 'no-referrer',
-//         body: JSON.stringify({
-//             'sex':'hulk',
-//             'number_horns': 123,
-//             'milk':true,
-//             'breed_id':1 
-//         })
-//     });
-//     const data = await resp.json();
-//     return data;
-// }
-
-// export const deleteCow = async () => {
-//     const resp = await fetch(`${URL}/cows/25`,{
-//         method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-//         mode: 'cors', // no-cors, *cors, same-origin
-//         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-//         credentials: 'same-origin', // include, *same-origin, omit
-//         headers: {
-//           'Content-Type': 'application/json'
-//           // 'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//         redirect: 'follow', // manual, *follow, error
-//         referrerPolicy: 'no-referrer',
-//     });
-//     const data = await resp.json();
-//     return data;
-// }
+export const deleteCow = async (cowObject) => {
+    const resp = await fetch(`${URL}/cows/${cowObject.id}`,{
+        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer',
+    });
+    const data = await resp.json(cowObject);
+    return data;
+}
