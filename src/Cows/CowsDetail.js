@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getACow, getBreeds,updateCow,deleteCow } from '../utils/fetch-utils';
 import classNames from 'classnames';
+import './CowsList.css';
 
 class CowsDetails extends Component {
     state = { 
@@ -23,7 +24,7 @@ class CowsDetails extends Component {
          this.setState({...aCowData, breeds});
      }
 
-//GET COWS OBJECT TO RETURN ID OF 'COW BEIN UPDATED'
+//GET COWS OBJECT TO RETURN ID OF 'COW BEING UPDATED'
      getBreedId = () =>{
          const breedObject = this.state.breeds.find(
              (cow) => cow.breed_type === this.state.breed
@@ -38,7 +39,7 @@ class CowsDetails extends Component {
             id: this.state.id,
             sex: this.state.sex,
             number_horns: this.state.number_horns,
-            milk: this.state.milk,                    //CHECK THIS MAY CAUSE SOME ISSUES!!!!!
+            milk: this.state.milk,                    
             breed_id: this.getBreedId()
         };
         
@@ -53,14 +54,14 @@ class CowsDetails extends Component {
         }
      };
 
-//DLETE COW
+// DELETE COW FROM UX
      clickToDelete = async (event) => {
          event.preventDefault();
          const deleteCowData = {
             id: this.state.id,
             sex: this.state.sex,
             number_horns: this.state.number_horns,
-            milk: this.state.milk,                    //CHECK THIS MAY CAUSE SOME ISSUES!!!!!
+            milk: this.state.milk,                    
             breed_id: this.getBreedId()
         };
         const data = await deleteCow(deleteCowData);

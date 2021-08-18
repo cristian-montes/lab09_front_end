@@ -52,10 +52,7 @@ export const createNewCow = async (cowObject) =>{
     return data;
 }
 
-
-
-
-
+//FUNCTION TO DELETE COWS FROM DATA TABLE
 export const deleteCow = async (cowObject) => {
     const resp = await fetch(`${URL}/cows/${cowObject.id}`,{
         method: 'DELETE', // *GET, POST, PUT, DELETE, etc.

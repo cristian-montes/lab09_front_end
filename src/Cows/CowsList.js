@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getCows} from '../utils/fetch-utils';
 import { Link} from 'react-router-dom';
+import './CowsList.css';
 
 class CowsList extends Component {
     state = {cowss:[] }
