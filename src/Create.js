@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { createNewCow ,deleteCow} from './utils/fetch-utils';
 
 class Create extends Component {
-    state = {};
+    // state = {};
     render() {
         return <h1>Create New Cow</h1>;
     }
