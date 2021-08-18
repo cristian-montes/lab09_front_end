@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getACow, getBreeds,updateCow } from '../utils/fetch-utils';
+import classNames from 'classnames';
 
 class CowsDetails extends Component {
     state = { 
@@ -55,6 +56,19 @@ class CowsDetails extends Component {
     render() { 
         return ( 
             <>
+                { this.state.message && (
+                    <div
+                        className={classNames ({
+                            message:true,
+                            error: this.state.error,
+                            success: !this.state.error,
+                        })}
+                        >
+                            {this.state.message}
+                    </div>
+                )
+
+                }
                 <p>Cow's Name is Numero-{this.state.id}</p>
                 <form id='update-cow'>
                      
