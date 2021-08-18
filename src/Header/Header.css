@@ -1,0 +1,33 @@
+header {
+    width: 100vw;
+    height: auto;
+    background-color: #c3f3c0;
+    display: flex;
+    justify-content: space-evenly;
+    background-image: url('./cow-h-bg.jpeg');
+}
+
+header p {
+    margin: 2%;
+    font-size: 50px;
+    color:#06d6a0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+a.active {
+    font-size: 20px;
+    text-decoration: none;
+    color: #118ab2;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+
+a {
+    margin: 10px;
+    font-size: 20px;
+    color: #fb8500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+
+

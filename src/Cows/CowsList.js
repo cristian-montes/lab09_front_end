@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { getCows} from '../utils/fetch-utils';
 import { Link} from 'react-router-dom';
+import './CowsList.css';
 
 class CowsList extends Component {
     state = {cowss:[] }
+
 componentDidMount = async () => {
     const data = await getCows();
     this.setState({cowss: data})
-}
+};
+
+
     render() { 
         return (
            <div className='cows-list'>
